@@ -6,7 +6,7 @@ static void lsargs_init(t_lsargs *lsargs)
 	lsargs->long_form = 0;
 	lsargs->recursive = 0;
 	lsargs->reverse = 0;
-	lsargs->orider_time = 0;
+	lsargs->order_time = 0;
 	//lsargs->path = NULL;
 	//lsargs->path = ft_strcpy(lsargs->path, "./");
 	ft_strcpy(lsargs->path, "./");
@@ -23,7 +23,7 @@ static int	arg_ispath(char *arg, t_lsargs lsargs)
 	argsz = ft_strlen(arg);
 	pathsz = ft_strlen(lsargs.path);
 	st = (struct stat *)malloc(sizeof(struct stat));
-	pth = (char *)malloc(sizof(char) * (argsz + pathsz));
+	pth = (char *)malloc(sizeof(char) * (argsz + pathsz));
 	ft_strcpy(pth, lsargs.path);
 	ft_strcat(pth, arg);
 	ft_putstr("PTH: ");	//
@@ -66,7 +66,7 @@ t_lsargs	analyze_args(char **argv)
 	lsargs_init(&lsargs);
 	if (args_are_valid(argv, lsargs) == 0)
 	{
-		ft_putendl_fd("Error: Bad option format.");
+		ft_putendl_fd("Error: Bad option format.", 2);
 		exit(1);
 	}
 	while (argv[scnt] != NULL)
@@ -81,7 +81,7 @@ t_lsargs	analyze_args(char **argv)
 		{
 			while (argv[scnt][ccnt] != '\0')
 			{
-				lsargs_set(argv[scnt][ccnt], &lsargs);
+				//lsargs_set(argv[scnt][ccnt], &lsargs);
 				ccnt++;
 			}
 		}

@@ -12,8 +12,10 @@ static struct s_file	*s_file_init(t_lsargs lsargs)
 		ft_putendl_fd(lsargs.path, 2);
 		exit(1);
 	}
-	sfile = s_file_getelems(d, lsargs);
+	//sfile = s_file_getelems(d, lsargs);
 	closedir(d);
+
+	sfile = NULL;
 	return (sfile);
 }
 
