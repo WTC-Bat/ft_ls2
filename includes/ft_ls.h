@@ -39,5 +39,9 @@ struct			s_file
 };
 
 t_lsargs	analyze_args(int argc, char **argv);
+int			arg_ispath(char *arg);
+void		lsargs_set(char c, t_lsargs *lsargs);
+void		lsargs_set_path(t_lsargs *lsargs, char **argv);
+void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
 
 #endif
