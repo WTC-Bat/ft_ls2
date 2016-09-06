@@ -47,6 +47,7 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		root = current;
 	}
 	free(st);
+	//s_file_format -> s_file_pad
 	return (root);
 }
 

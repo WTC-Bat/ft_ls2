@@ -83,3 +83,13 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 	ft_strcat(pth, d_name);
 	return(pth);
 }
+
+void	s_file_pad(struct s_file *sfile)
+{
+	//format name
+	//format group
+	//format size
+	//format links
+
+	//foramt date??? shouldn't have to
+}
