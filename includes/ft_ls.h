@@ -40,9 +40,12 @@ struct			s_file
 
 t_lsargs	analyze_args(int argc, char **argv);
 int			arg_ispath(char *arg);
+char		*format_time(time_t *ttmtime);
 void		lsargs_set(char c, t_lsargs *lsargs);
 void		lsargs_set_path(t_lsargs *lsargs, char **argv);
 void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
+char		*s_file_get_path(t_lsargs lsargs, char *d_name);
+char		*s_file_permissions(struct stat *st);
 char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
 
 #endif
