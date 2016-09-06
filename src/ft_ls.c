@@ -1,6 +1,6 @@
 #include "ft_ls.h"
 
-/*
+
 static struct s_file	*s_file_init(t_lsargs lsargs)
 {
 	DIR				*d;
@@ -15,15 +15,13 @@ static struct s_file	*s_file_init(t_lsargs lsargs)
 	}
 	//sfile = s_file_getelems(d, lsargs);
 	closedir(d);
-
-	sfile = NULL;
+	sfile = NULL;	// !<--!
 	return (sfile);
 }
-*/
 
 int						main(int argc, char **argv)
 {
-	//struct s_file	*sfile;
+	struct s_file	*sfile;
 	t_lsargs		lsargs;
 
 	if (argc == 0)
@@ -32,7 +30,7 @@ int						main(int argc, char **argv)
 		exit(1);
 	}
 	lsargs = analyze_args(argc, argv);
-	//sfile = s_file_init(lsargs);
+	sfile = s_file_init(lsargs);
 	//initialize
 	//free
 	return (0);
