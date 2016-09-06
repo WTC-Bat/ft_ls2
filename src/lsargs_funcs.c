@@ -1,4 +1,5 @@
-#include "../includes/ft_ls.h"
+//#include "../includes/ft_ls.h"
+#include "ft_ls.h"
 
 void	lsargs_set_path(t_lsargs *lsargs, char **argv)
 {
