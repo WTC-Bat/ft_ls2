@@ -21,7 +21,6 @@ void	lsargs_set_path(t_lsargs *lsargs, char **argv)
 		else
 		{
 			lsargs->path = ft_strdup("./");
-			break;
 		}
 		scnt++;
 	}

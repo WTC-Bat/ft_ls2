@@ -43,7 +43,7 @@ t_lsargs	analyze_args(int argc, char **argv)
 	lsargs_init(argc, argv, &lsargs);
 	if (args_are_valid(argc, argv) == 0)
 	{
-		ft_putendl_fd("Error: Bad option format.", 2);
+		ft_putendl_fd("Error: Unknown argument. Check path, if used.", 2);
 		exit(1);
 	}
 	while (argv[scnt] != NULL)

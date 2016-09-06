@@ -40,11 +40,21 @@ struct			s_file
 
 t_lsargs	analyze_args(int argc, char **argv);
 int			arg_ispath(char *arg);
+char		*do_pad(int longest, int len, char *padstr);
+void		format_gname(struct s_file *sfile);
+void		format_links(struct s_file *sfile);
+void		format_size(struct s_file *sfile);
 char		*format_time(time_t *ttmtime);
+void		format_uname(struct s_file *sfile);
+int			get_longest_gname(struct s_file *sfile);
+int			get_longest_links(struct s_file *sfile);
+int			get_longest_size(struct s_file *sfile);
+int			get_longest_uname(struct s_file *sfile);
 void		lsargs_set(char c, t_lsargs *lsargs);
 void		lsargs_set_path(t_lsargs *lsargs, char **argv);
 void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
 char		*s_file_get_path(t_lsargs lsargs, char *d_name);
+void		s_file_pad(struct s_file *sfile);
 char		*s_file_permissions(struct stat *st);
 char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
 

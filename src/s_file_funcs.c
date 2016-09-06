@@ -78,6 +78,7 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 	dnamesz = ft_strlen(d_name);
 	pth = (char *)malloc(sizeof(char) * (pthsz + dnamesz + 2));	//?1
 	ft_strcpy(pth, lsargs.path);
+	//if (ft_strcmp(pth, "./") != 0)
 	if (ft_strequ(pth, "./") == 0)
 		ft_strcat(pth, "/");
 	ft_strcat(pth, d_name);
@@ -86,7 +87,7 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 
 void	s_file_pad(struct s_file *sfile)
 {
-	//format name
+	format_size(sfile);
 	//format group
 	//format size
 	//format links

@@ -47,7 +47,7 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		root = current;
 	}
 	free(st);
-	//s_file_format -> s_file_pad
+	s_file_pad(root);
 	return (root);
 }
 
@@ -67,6 +67,28 @@ static struct s_file	*s_file_init(t_lsargs lsargs)
 	closedir(d);
 	return (sfile);
 }
+
+/*
+static void				initialize(struct s_file *sfile, t_lsargs lsargs)
+{
+	if (lsargs.all_members == 1)
+		s_file_print_members(sfile);
+	else
+	{
+		if (lsargs.order_time == 1)
+			if (lsargs.reverse == 1)
+				s_file_sort_mtime_rev(sfile);
+			else
+				s_file_sort_mtime(sfile);
+		else
+			if (lsargs.reverse == 1)
+				s_file_sort_az_rev(sfile);
+			else
+				s_file_sort_az(sfile);
+		handle_print(sfile, lsargs);
+	}
+}
+*/
 
 int						main(int argc, char **argv)
 {
