@@ -38,6 +38,6 @@ struct			s_file
 	struct s_file	*next;
 };
 
-t_lsargs	analyze_args(char **argv);
+t_lsargs	analyze_args(int argc, char **argv);
 
 #endif

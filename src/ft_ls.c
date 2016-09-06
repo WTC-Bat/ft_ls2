@@ -31,7 +31,7 @@ int						main(int argc, char **argv)
 		ft_putendl("Exiting");
 		exit(1);
 	}
-	lsargs = analyze_args(argv);
+	lsargs = analyze_args(argc, argv);
 	//sfile = s_file_init(lsargs);
 	//initialize
 	//free
