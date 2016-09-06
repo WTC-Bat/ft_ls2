@@ -35,15 +35,8 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		lstat(pth, st);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
-		//ft_putendl(current->name);
 		getelems2(current, st);
 		s_file_set_dirpath(current, st, pth);
-		//if (S_ISDIR(st->st_mode) > 0)	//In getelems2 ?
-		//{
-		//	current->is_dir = 1;
-		//	ft_putendl(pth);
-		//	current->dir_path = ft_strdup(pth);
-		//}
 		free(pth);
 		current->next = root;
 		root = current;
