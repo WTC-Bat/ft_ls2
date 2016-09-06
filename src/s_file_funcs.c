@@ -58,11 +58,9 @@ char	*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la)
 			nsz = ft_strlen(dnm);
 			lnsz = ft_strlen(lname);
 			name = (char *)malloc(sizeof(char) * (nsz + lnsz + 4));
-			//?
 			ft_strcpy(name, dnm);
 			ft_strcat(name, " -> ");
 			ft_strcat(name, lname);
-			//?
 			free(lname);
 			return (name);
 		}

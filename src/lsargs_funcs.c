@@ -1,4 +1,3 @@
-//#include "../includes/ft_ls.h"
 #include "ft_ls.h"
 
 void	lsargs_set_path(t_lsargs *lsargs, char **argv)
@@ -17,33 +16,12 @@ void	lsargs_set_path(t_lsargs *lsargs, char **argv)
 		if (arg_ispath(argv[scnt]) == 1)
 		{
 			lsargs->path = ft_strdup(argv[scnt]);
-			//return ;
 			break;
 		}
-		else	//may be uneccesary. may also be a precaution?
+		else
 		{
-			/*
-			pthsz = ft_strlen(lsargs->path);
-			argsz = ft_strlen(argv[scnt]);
-			pth = (char *)malloc(sizeof(char) * (pthsz + argsz));
-			ft_strcpy(pth, lsargs->path);
-			ft_strcat(pth, argv[scnt]);
-			if (arg_ispath(pth) == 1)
-			{
-				lsargs->path = ft_strdup(pth);
-				ft_putendl("Arg is path after join");
-				return ;
-			}
-			else
-			{
-				//lsargs->path = "./";
-				lsargs->path = ft_strdup("./"); //?!
-				ft_putendl("No Path");
-				return ;
-			}
-			free(pth);
-			*/
 			lsargs->path = ft_strdup("./");
+			break;
 		}
 		scnt++;
 	}
