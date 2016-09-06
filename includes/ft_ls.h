@@ -53,9 +53,11 @@ int			get_longest_uname(struct s_file *sfile);
 void		lsargs_set(char c, t_lsargs *lsargs);
 void		lsargs_set_path(t_lsargs *lsargs, char **argv);
 void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
+void		s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth);
 char		*s_file_get_path(t_lsargs lsargs, char *d_name);
 void		s_file_pad(struct s_file *sfile);
 char		*s_file_permissions(struct stat *st);
+void		s_file_print_members(struct s_file *sfile);
 char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
 
 #endif

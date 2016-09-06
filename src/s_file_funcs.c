@@ -94,3 +94,19 @@ void	s_file_pad(struct s_file *sfile)
 
 	//foramt date??? shouldn't have to
 }
+
+void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
+{
+	if (S_ISDIR(st->st_mode) > 0)
+	{
+		sf->is_dir = 1;
+		sf->dir_path = ft_strdup(pth);
+	}
+	/*
+	else
+	{
+		sf->is_dir = 0;
+		sf->dir_path = ft_strdup("./");
+	}
+	*/
+}

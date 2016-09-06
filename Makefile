@@ -6,9 +6,9 @@ HEADLFT = "./libft/"
 FLAGS = -Wall -Werror -Wextra
 SRCS = $(SRC)ft_ls.c $(SRC)arg_funcs.c $(SRC)lsargs_funcs.c \
 		$(SRC)s_file_funcs.c $(SRC)format_funcs.c $(SRC)length_funcs.c \
-		$(SRC)pad_funcs.c \
+		$(SRC)pad_funcs.c $(SRC)print_funcs.c $(SRC)s_file_print_members.c \
 		#$(SRC)do_sort.c \
-		$(SRC)print_funcs.c	$(SRC)s_file_sort.c
+		$(SRC)s_file_sort.c
 
 all: $(NAME)
 
