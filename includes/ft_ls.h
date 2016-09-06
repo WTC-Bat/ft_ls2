@@ -43,5 +43,6 @@ int			arg_ispath(char *arg);
 void		lsargs_set(char c, t_lsargs *lsargs);
 void		lsargs_set_path(t_lsargs *lsargs, char **argv);
 void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
+char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
 
 #endif
