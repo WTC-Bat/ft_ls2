@@ -1,8 +1,23 @@
 #include "ft_ls.h"
 
-static void				*getelems2(struct s_file *sfile, struct stat *st)
+static void				getelems2(struct s_file *sfile, struct stat *st)
 {
+	struct passwd	*pd;
+	struct group	*gp;
 
+	pd = getpwuid(st->st_uid);
+	gp = getgrgid(st->st_gid);
+	//sfile->perms = s_file_permissions(st);
+	sfile->hlinks = st->st_nlink;
+	//ft_putendl(pd->pw_name);
+	sfile->uname = ft_strdup(pd->pw_name);
+	sfile->gname = ft_strdup(gp->gr_name);
+	sfile->size = st->st_size;
+	sfile->ttmtime = st->st_mtime;
+	//sfile->mod_time = format_time(st->st_mtime);
+	sfile->block_count = st->st_blocks;
+	sfile->is_dir = 0;
+	sfile->dir_path = NULL;
 }
 
 static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
@@ -14,21 +29,25 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 	char			*pth;
 
 	root = NULL;
+	st = (struct stat *)malloc(sizeof(struct stat));
 	while ((dent = readdir(d)) != NULL)
 	{
 		pth = ft_strjoin(lsargs.path, dent->d_name);
-		st = (struct stat *)malloc(sizeof(struct stat));
 		lstat(pth, st);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
 		ft_putendl(current->name);
-		//getelems2(current, st);
-
+		getelems2(current, st);
+		if (S_ISDIR(st->st_mode) > 0)	//In getelems2 ?
+		{
+			current->is_dir = 1;
+			current->dir_path = ft_strdup(pth);
+		}
 		free(pth);
-		free(st);
 		current->next = root;
 		root = current;
 	}
+	free(st);
 	return (root);
 }
 
