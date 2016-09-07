@@ -13,13 +13,15 @@ static void	s_file_prent_long(struct s_file *sfile)
 {
 	ft_putstr(sfile->perms);
 	ft_putchar(' ');
-	ft_putstr(sfile->strhlinks);
+	//ft_putstr(sfile->strhlinks);		//////
+	ft_putstr(ft_itoa(sfile->hlinks));
 	ft_putchar(' ');
 	ft_putstr(sfile->uname);
 	ft_putchar(' ');
 	ft_putstr(sfile->gname);
 	ft_putchar(' ');
-	ft_putstr(sfile->strsize);
+	//ft_putstr(sfile->strsize);		/////
+	ft_putstr(ft_itoa(sfile->size));
 	ft_putchar(' ');
 	ft_putstr(sfile->mod_time);
 	ft_putchar(' ');

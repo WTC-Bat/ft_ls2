@@ -25,6 +25,7 @@ void	format_size(struct s_file *sfile)
 	while (sfile != NULL)
 	{
 		strsize = ft_itoa(sfile->size);
+		ft_putendl("GOT STRSIZE");
 		len = ft_strlen(strsize);
 		if (len < longest)
 			fsize = do_pad_left(longest, len, strsize);
@@ -51,7 +52,7 @@ void	format_links(struct s_file *sfile)
 	while (sfile != NULL)
 	{
 		strlinks = ft_itoa(sfile->hlinks);
-		ft_putnbr_endl(sfile->hlinks);
+		//ft_putnbr_endl(sfile->hlinks);
 		len = ft_strlen(strlinks);
 		if (len < longest)
 			flinks = do_pad_left(longest, len, strlinks);

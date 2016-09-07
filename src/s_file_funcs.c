@@ -61,7 +61,9 @@ char	*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la)
 			ft_strcpy(name, dnm);
 			ft_strcat(name, " -> ");
 			ft_strcat(name, lname);
-			free(lname);
+			//free(lname);
+			//name free?
+			ft_strdel(&lname);
 			return (name);
 		}
 	}

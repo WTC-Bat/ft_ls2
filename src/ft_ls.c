@@ -17,6 +17,9 @@ static void				getelems2(struct s_file *sfile, struct stat *st)
 	sfile->block_count = st->st_blocks;
 	sfile->is_dir = 0;
 	sfile->dir_path = NULL;
+
+	//sfile->strsize = ft_itoa(sfile->size);			/////
+	//sfile->strhlinks = ft_itoa(sfile->hlinks);		/////
 }
 
 static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
@@ -35,6 +38,7 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		lstat(pth, st);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
+		ft_putendl("GETTINGELEMS");
 		getelems2(current, st);
 		ft_putendl("GOTELEMS");
 		s_file_set_dirpath(current, st, pth);
@@ -45,8 +49,9 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 	free(st);
 	pth = NULL;
 	free(pth);
+	//ft_strdel(&pth);
 	ft_putendl("SFILE PADDING");
-	s_file_pad(root);
+	//s_file_pad(root);			/////
 	ft_putendl("SFILE PADDED");
 	return (root);
 }
