@@ -20,13 +20,14 @@ void	format_size(struct s_file *sfile)
 	strsize = NULL;
 	fsize = NULL;
 	longest = get_longest_size(sfile);
+	ft_putendl("GOT LONGEST SIZE");
 	len = 0;
 	while (sfile != NULL)
 	{
 		strsize = ft_itoa(sfile->size);
 		len = ft_strlen(strsize);
 		if (len < longest)
-			fsize = do_pad(longest, len, strsize);
+			fsize = do_pad_left(longest, len, strsize);
 		else
 			fsize = ft_strdup(strsize);
 		sfile->strsize = fsize;
@@ -43,14 +44,17 @@ void	format_links(struct s_file *sfile)
 
 	strlinks = NULL;
 	flinks = NULL;
+	ft_putendl("GETTING LONGEST LINKS");
 	longest = get_longest_links(sfile);
+	ft_putendl("GOT LONGEST LINKS");
 	len = 0;
 	while (sfile != NULL)
 	{
 		strlinks = ft_itoa(sfile->hlinks);
+		ft_putnbr_endl(sfile->hlinks);
 		len = ft_strlen(strlinks);
 		if (len < longest)
-			flinks = do_pad(longest, len, strlinks);
+			flinks = do_pad_left(longest, len, strlinks);
 		else
 			flinks = ft_strdup(strlinks);
 		sfile->strhlinks = flinks;
@@ -140,15 +144,12 @@ void	format_uname(struct s_file *sfile)
 		len = ft_strlen(sfile->uname);
 		if (len < longest)
 		{
-			funame = do_pad(longest, len, sfile->uname);
-			ft_putendl("CLR: UNAME");
+			funame = do_pad_right(longest, len, sfile->uname);
 			ft_strclr(sfile->uname);
-			ft_putendl("CLRD: UNAME");
-			ft_putendl("FREE: UNAME");
 			free(sfile->uname);
-			ft_putendl("FREED: UNAME");
 			sfile->uname = funame;
 		}
+		sfile = sfile->next;
 	}
 }
 
@@ -170,14 +171,11 @@ void	format_gname(struct s_file *sfile)
 		len = ft_strlen(sfile->gname);
 		if (len < longest)
 		{
-			fgname = do_pad(longest, len, sfile->gname);
-			ft_putendl("CLR: GNAME");
+			fgname = do_pad_right(longest, len, sfile->gname);
 			ft_strclr(sfile->gname);
-			ft_putendl("CLRD: GNAME");
-			ft_putendl("FREE: GNAME");
 			free(sfile->gname);
-			ft_putendl("FREED: GNAME");
 			sfile->gname = fgname;
 		}
+		sfile = sfile->next;
 	}
 }

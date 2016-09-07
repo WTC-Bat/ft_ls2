@@ -40,7 +40,8 @@ struct			s_file
 
 t_lsargs	analyze_args(int argc, char **argv);
 int			arg_ispath(char *arg);
-char		*do_pad(int longest, int len, char *padstr);
+char		*do_pad_left(int longest, int len, char *padstr);
+char		*do_pad_right(int longest, int len, char *padstr);
 void		do_sort(struct s_file *root, struct s_file *nxt);
 void		format_gname(struct s_file *sfile);
 void		format_links(struct s_file *sfile);
