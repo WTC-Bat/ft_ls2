@@ -41,6 +41,7 @@ struct			s_file
 t_lsargs	analyze_args(int argc, char **argv);
 int			arg_ispath(char *arg);
 char		*do_pad(int longest, int len, char *padstr);
+void		do_sort(struct s_file *root, struct s_file *nxt);
 void		format_gname(struct s_file *sfile);
 void		format_links(struct s_file *sfile);
 void		format_size(struct s_file *sfile);
@@ -50,6 +51,7 @@ int			get_longest_gname(struct s_file *sfile);
 int			get_longest_links(struct s_file *sfile);
 int			get_longest_size(struct s_file *sfile);
 int			get_longest_uname(struct s_file *sfile);
+void		handle_print(struct s_file *sfile, t_lsargs lsargs);
 void		lsargs_set(char c, t_lsargs *lsargs);
 void		lsargs_set_path(t_lsargs *lsargs, char **argv);
 void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
@@ -58,6 +60,10 @@ char		*s_file_get_path(t_lsargs lsargs, char *d_name);
 void		s_file_pad(struct s_file *sfile);
 char		*s_file_permissions(struct stat *st);
 void		s_file_print_members(struct s_file *sfile);
+void		s_file_sort_az(struct s_file *sfile);
+void		s_file_sort_az_rev(struct s_file *sfile);
+void		s_file_sort_mtime(struct s_file *sfile);
+void		s_file_sort_mtime_rev(struct s_file *sfile);
 char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
 
 #endif

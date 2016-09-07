@@ -37,7 +37,9 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
 		getelems2(current, st);
 		s_file_set_dirpath(current, st, pth);
+		ft_putendl("FREE: PTH");
 		free(pth);
+		ft_putendl("FREED: PTH");
 		current->next = root;
 		root = current;
 	}
@@ -67,7 +69,6 @@ static void				initialize(struct s_file *sfile, t_lsargs lsargs)
 {
 	if (lsargs.all_members == 1)
 		s_file_print_members(sfile);
-	/*
 	else
 	{
 		if (lsargs.order_time == 1)
@@ -82,7 +83,6 @@ static void				initialize(struct s_file *sfile, t_lsargs lsargs)
 				s_file_sort_az(sfile);
 		handle_print(sfile, lsargs);
 	}
-	*/
 }
 
 int						main(int argc, char **argv)

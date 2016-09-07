@@ -11,6 +11,8 @@ char	*do_pad(int longest, int len, char *padstr)
 	fsize = (char *)malloc(sizeof(char) * len + (longest - len));	//+1?
 	ft_strcpy(fsize, pad);
 	ft_strcat(fsize, padstr);
+	ft_putendl("FREE: PAD");
 	free(pad);
+	ft_putendl("FREED: PAD ");
 	return (fsize);
 }

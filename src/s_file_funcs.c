@@ -10,7 +10,9 @@ static char	*s_file_permissions2(struct stat *st, char *perms)
 		perms[9] = 'x';
 	perms[10] = '\0';
 	outperms = ft_strdup(perms);
+	ft_putendl("FREE: PERMS");
 	free(perms);
+	ft_putendl("FREED: PERMS");
 	return (outperms);
 }
 
@@ -61,7 +63,9 @@ char	*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la)
 			ft_strcpy(name, dnm);
 			ft_strcat(name, " -> ");
 			ft_strcat(name, lname);
+			ft_putendl("FREE: LNAME");
 			free(lname);
+			ft_putendl("FREED: LNAME");
 			return (name);
 		}
 	}
@@ -88,9 +92,9 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 void	s_file_pad(struct s_file *sfile)
 {
 	format_size(sfile);
-	//format group
-	//format size
-	//format links
+	format_links(sfile);
+	//format_uname(sfile);
+	//foramt_gname(sfile);
 
 	//foramt date??? shouldn't have to
 }
