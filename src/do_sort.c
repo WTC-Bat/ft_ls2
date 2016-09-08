@@ -21,6 +21,7 @@ static void	do_sort2(struct s_file *root, struct s_file *nxt)
 	char	*tmp_mtime;
 	char	*tmp_name;
 
+	//block_count
 	tmp_size = root->size;
 	tmp_strsize = root->strsize;
 	tmp_ttmtime = root->ttmtime;
