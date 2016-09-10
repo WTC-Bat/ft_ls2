@@ -117,3 +117,23 @@ void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
 	}
 	*/
 }
+
+void	s_file_free(struct s_file *sfile)
+{
+	struct s_file *tmp;
+
+	while (sfile != NULL)
+	{
+		tmp = sfile;
+		sfile = sfile->next;
+		// ft_strdel(&sfile->perms);
+		//ft_strdel(sfile->strhlinks);
+		// ft_strdel(&sfile->uname);
+		// ft_strdel(&sfile->gname);
+		//ft_strdel(sfile->strsize);
+		// ft_strdel(&sfile->mod_time);
+		// ft_strdel(&sfile->name);
+		// ft_strdel(&sfile->dir_path);
+		free(tmp);
+	}
+}

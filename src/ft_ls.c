@@ -38,21 +38,21 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		lstat(pth, st);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
-		ft_putendl("GETTINGELEMS");
+		// ft_putendl("GETTINGELEMS");
 		getelems2(current, st);
-		ft_putendl("GOTELEMS");
+		// ft_putendl("GOTELEMS");
 		s_file_set_dirpath(current, st, pth);
-		ft_putendl("DIRPATH_SET");
+		// ft_putendl("DIRPATH_SET");
 		current->next = root;
 		root = current;
 	}
 	free(st);
-	pth = NULL;
-	free(pth);
-	//ft_strdel(&pth);
-	ft_putendl("SFILE PADDING");
-	//s_file_pad(root);			/////
-	ft_putendl("SFILE PADDED");
+	//pth = NULL;
+	//free(pth);
+	ft_strdel(&pth);
+	//ft_putendl("SFILE PADDING");
+	//s_file_pad(root);					/////
+	//ft_putendl("SFILE PADDED");
 	return (root);
 }
 
@@ -89,7 +89,7 @@ static void				initialize(struct s_file *sfile, t_lsargs lsargs)
 				s_file_sort_az_rev(sfile);
 			else
 				s_file_sort_az(sfile);
-		ft_putendl("HANDLE_PRINT");
+		//ft_putendl("HANDLE_PRINT");
 		handle_print(sfile, lsargs);
 	}
 }
@@ -105,10 +105,11 @@ int						main(int argc, char **argv)
 		exit(1);
 	}
 	lsargs = analyze_args(argc, argv);
-	ft_putendl("ARGS ANALYZED");
+	//ft_putendl("ARGS ANALYZED");
 	sfile = s_file_init(lsargs);
-	ft_putendl("S_FILE_INIT\'D");
+	//ft_putendl("S_FILE_INIT\'D");
 	initialize(sfile, lsargs);
 	//free
+	//s_file_free(sfile);
 	return (0);
 }

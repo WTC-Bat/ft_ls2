@@ -13,7 +13,9 @@ void	s_file_sort_az(struct s_file *sfile)
 		{
 			if (ft_strcmp(root->name, nxt->name) > 0)
 			{
+				//ft_putendl("SORTING A-Z");
 				do_sort(root, nxt);
+				//ft_putendl("SORTED A-Z");
 			}
 			root = root->next;
 		}
