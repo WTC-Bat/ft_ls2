@@ -10,8 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// char	ft_tolower(int c)
 char	ft_tolower(int c)
 {
+	// if (c >= 'A' && c <= 'Z')
+	// 	c = 'a' + (c - 'A');
+	// return (c);
+
+
+	// if (c > 65 && c < 91)
+	// 	return (c + 32);
+	// else
+	// 	return (c);
+
+
+	// unsigned char	uc;
+	//
+	// uc = (unsigned char)c;
+	// if (uc < 195 || uc > 218)
+	// 	return (c);
+	// else
+	// 	return (c + 32);
+
+
 	if (c < 65 || c > 90)
 		return (c);
 	else

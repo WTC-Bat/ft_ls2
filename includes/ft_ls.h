@@ -56,6 +56,7 @@ void		handle_print(struct s_file *sfile, t_lsargs lsargs);
 void		lsargs_set(char c, t_lsargs *lsargs);
 void		lsargs_set_path(t_lsargs *lsargs, char **argv);
 void 		lsargs_init(int argc, char **argv, t_lsargs *lsargs);
+void		lsargs_free(t_lsargs lsargs);
 void		s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth);
 char		*s_file_get_path(t_lsargs lsargs, char *d_name);
 void		s_file_pad(struct s_file *sfile);
@@ -65,6 +66,7 @@ void		s_file_sort_az(struct s_file *sfile);
 void		s_file_sort_az_rev(struct s_file *sfile);
 void		s_file_sort_mtime(struct s_file *sfile);
 void		s_file_sort_mtime_rev(struct s_file *sfile);
+void		s_file_free(struct s_file *sfile);
 char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
 
 #endif

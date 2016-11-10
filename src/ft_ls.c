@@ -105,5 +105,8 @@ int						main(int argc, char **argv)
 	// ft_putendl("S_FILE_INIT\'D");
 	initialize(sfile, lsargs);
 	//free
+	// free(sfile);
+	lsargs_free(lsargs);
+	// s_file_free(sfile);
 	return (0);
 }
