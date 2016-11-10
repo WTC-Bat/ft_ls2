@@ -20,7 +20,7 @@ void	format_size(struct s_file *sfile)
 	strsize = NULL;
 	fsize = NULL;
 	longest = get_longest_size(sfile);
-	ft_putendl("GOT LONGEST SIZE");
+	// ft_putendl("GOT LONGEST SIZE");
 	len = 0;
 	while (sfile != NULL)
 	{
@@ -51,13 +51,19 @@ void	format_links(struct s_file *sfile)
 	while (sfile != NULL)
 	{
 		strlinks = ft_itoa(sfile->hlinks);
-		ft_putnbr_endl(sfile->hlinks);
+		// ft_putnbr_endl(sfile->hlinks);
 		len = ft_strlen(strlinks);
 		if (len < longest)
-			flinks = do_pad_left(longest, len, strlinks);
+		{
+			ft_putendl("DO_PAD_LEFT");
+			// flinks = do_pad_left(longest, len, strlinks);
+			sfile->strhlinks = do_pad_left(longest, len, strlinks);
+			ft_putendl("PADDED_LEFT");
+		}
 		else
-			flinks = ft_strdup(strlinks);
-		sfile->strhlinks = flinks;
+			sfile->strhlinks = ft_strdup(strlinks);
+			// flinks = ft_strdup(strlinks);
+		// sfile->strhlinks = flinks;
 		sfile = sfile->next;
 	}
 }

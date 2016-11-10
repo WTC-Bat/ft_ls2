@@ -87,15 +87,15 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 
 void	s_file_pad(struct s_file *sfile)
 {
+	ft_putendl("FORMATTING");
 	format_size(sfile);
-	ft_putendl("FORMATTED: SIZE");
+	ft_putendl("FORMATTED SIZE");
 	format_links(sfile);
-	ft_putendl("FORMATTING: UNAME");
+	ft_putendl("FORMATTED LINKS");
 	format_uname(sfile);
-	ft_putendl("FORMATTED: UNAME");
-	ft_putendl("FORMATTING: GNAME");
+	ft_putendl("FORMATTED UNAME");
 	format_gname(sfile);
-	ft_putendl("FORMATTED: GNAME");
+	ft_putendl("FORMATTED GNAME");
 
 	//foramt date??? shouldn't have to
 }
