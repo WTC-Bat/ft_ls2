@@ -46,7 +46,8 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 	// pth = NULL;
 	// free(pth);
 	// ft_putendl("SFILE PADDING");
-	s_file_pad(root);
+	// s_file_pad(root);
+	s_file_format(root);
 	// ft_putendl("SFILE PADDED");
 	return (root);
 }
@@ -107,6 +108,6 @@ int						main(int argc, char **argv)
 	//free
 	// free(sfile);
 	lsargs_free(lsargs);
-	// s_file_free(sfile);
+	s_file_free(sfile);
 	return (0);
 }

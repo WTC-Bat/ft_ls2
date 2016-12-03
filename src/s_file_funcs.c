@@ -85,21 +85,6 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 	return(pth);
 }
 
-void	s_file_pad(struct s_file *sfile)
-{
-	ft_putendl("FORMATTING");
-	format_size(sfile);
-	ft_putendl("FORMATTED SIZE");
-	format_links(sfile);
-	ft_putendl("FORMATTED LINKS");
-	format_uname(sfile);
-	ft_putendl("FORMATTED UNAME");
-	format_gname(sfile);
-	ft_putendl("FORMATTED GNAME");
-
-	//foramt date??? shouldn't have to
-}
-
 void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
 {
 	if (S_ISDIR(st->st_mode) > 0)
@@ -118,27 +103,17 @@ void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
 
 void	s_file_free(struct s_file *sfile)
 {
-	struct s_file	*tmp;
-
 	while (sfile != NULL)
 	{
-		tmp = sfile;
+		// ft_strdel(&(sfile)->perms);
+		ft_strdel(&(sfile)->strhlinks);
+		ft_strdel(&(sfile)->uname);
+		ft_strdel(&(sfile)->gname);
+		ft_strdel(&(sfile)->strsize);
+		ft_strdel(&(sfile)->mod_time);
+			// ft_strdel(&(sfile)->name);
+		ft_strdel(&(sfile)->dir_path);
+		// free(sfile);
 		sfile = sfile->next;
-		// ft_strclr(tmp->perms);
-		free(tmp->perms);
-		// ft_strclr(tmp->strhlinks);
-		free(tmp->strhlinks);
-		// ft_strclr(tmp->uname);
-		free(tmp->uname);
-		// ft_strclr(tmp->gname);
-		free(tmp->gname);
-		// ft_strclr(tmp->strsize);
-		free(tmp->strsize);
-		// ft_strclr(tmp->mod_time);
-		free(tmp->mod_time);
-		// ft_strclr(tmp->name);
-		free(tmp->name);
-		// ft_strclr(tmp->dir_path);
-		free(tmp->dir_path);
 	}
 }
