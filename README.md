@@ -1,4 +1,5 @@
-If errors occur, some possible problems may be:
-0	-	The setting of 'lsargs->path' in "lsargs_set_path" (lsargs_funcs.c)
 
-0	-	do_pad <- fsize
+# ft_ls
+
+	-	Block count is still slightly inaccurate. Check if it was fixed in
+		 another ft_ls repository (ft_ls/ft_lsR)
