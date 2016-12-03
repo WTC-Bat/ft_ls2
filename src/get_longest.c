@@ -24,7 +24,7 @@ static int	get_len(int n)
 */
 int			get_longest(struct s_file *sfile, char c)
 {
-	size_t	len;		//int?
+	size_t	len;
 	size_t	longest;
 
 	len = 0;
