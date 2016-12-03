@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lindexof.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/24 15:04:43 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/31 17:13:01 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/05/15 15:19:09 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/05/15 15:19:12 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lindexof(const char *str, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		cnt;
-
-	cnt = ft_strlen(str) - 1;
-	while (cnt != 0)
+	if (n > 9)
 	{
-		if (str[cnt] == c)
-			return (cnt);
-		cnt--;
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
-	return (0);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+		ft_putnbr_fd(n, fd);
+	}
+	else
+	{
+		ft_putchar_fd('0' + n, fd);
+	}
 }
