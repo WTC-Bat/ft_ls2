@@ -11,6 +11,7 @@ ft_ls
 .Spotlight*
 *.c.swp
 *.h.swp
+*.dSYM
 
 # Test Files
 tst.c
