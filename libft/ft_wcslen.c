@@ -12,10 +12,12 @@
 
 #include "libft.h"
 
-size_t	ft_wcslen(const wchar_t *wcs)
+size_t	ft_wcslen(wchar_t const *wcs)
 {
-	int		cnt;
+	size_t	cnt;
 
+	if (wcs == NULL)
+		return (0);
 	cnt = 0;
 	while (*wcs++ != '\0')
 		cnt++;

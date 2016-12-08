@@ -61,7 +61,8 @@ char	*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la)
 			ft_strcpy(name, dnm);
 			ft_strcat(name, " -> ");
 			ft_strcat(name, lname);
-			free(lname);
+			// free(lname);
+			ft_strdel(&lname);
 			return (name);
 		}
 	}
@@ -85,21 +86,6 @@ char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 	return(pth);
 }
 
-void	s_file_pad(struct s_file *sfile)
-{
-	ft_putendl("FORMATTING");
-	format_size(sfile);
-	ft_putendl("FORMATTED SIZE");
-	format_links(sfile);
-	ft_putendl("FORMATTED LINKS");
-	format_uname(sfile);
-	ft_putendl("FORMATTED UNAME");
-	format_gname(sfile);
-	ft_putendl("FORMATTED GNAME");
-
-	//foramt date??? shouldn't have to
-}
-
 void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
 {
 	if (S_ISDIR(st->st_mode) > 0)
@@ -114,4 +100,21 @@ void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
 		sf->dir_path = ft_strdup("./");
 	}
 	*/
+}
+
+void	s_file_free(struct s_file *sfile)
+{
+	while (sfile != NULL)
+	{
+		// ft_strdel(&(sfile)->perms);
+		ft_strdel(&(sfile)->strhlinks);
+		ft_strdel(&(sfile)->uname);
+		ft_strdel(&(sfile)->gname);
+		ft_strdel(&(sfile)->strsize);
+		ft_strdel(&(sfile)->mod_time);
+			// ft_strdel(&(sfile)->name);
+		ft_strdel(&(sfile)->dir_path);
+		// free(sfile);
+		sfile = sfile->next;
+	}
 }

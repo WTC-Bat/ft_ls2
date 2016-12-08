@@ -12,16 +12,23 @@
 
 #include "libft.h"
 
-int		ft_lindexof(const char *str, int c)
+/*
+**	Returns the index of the last occurence of the char 'c' in the c-string
+**	'str'. If str is NULL or empty, or 'c' is '\0', -1 is returned.
+*/
+int		ft_lindexof(char const *str, char c)
 {
 	int		cnt;
 
-	cnt = ft_strlen(str) - 1;
-	while (cnt != 0)
+	if (str != NULL && str[0] != '\0' && c != '\0')
 	{
-		if (str[cnt] == c)
-			return (cnt);
-		cnt--;
+		cnt = ft_strlen(str) - 1;
+		while (cnt >= 0)
+		{
+			if (str[cnt] == c)
+				return (cnt);
+			cnt--;
+		}
 	}
-	return (0);
+	return (-1);
 }

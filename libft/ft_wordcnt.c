@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prependc.c                                      :+:      :+:    :+:   */
+/*   ft_wordcnt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/31 17:14:19 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/31 17:14:20 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/08/09 14:27:09 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/08/09 14:27:10 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_prependc(char *str, int c)
+int		ft_wordcnt(char const *str)
 {
-	int		len;
 	int		cnt;
-	char	*out_str;
+	int		wcnt;
 
-	len = ft_strlen(str) + 1;
-	cnt = 1;
-	out_str = (char *)malloc(sizeof(char) * len);
-	out_str[0] = c;
-	while (cnt < len)
+	cnt = 0;
+	wcnt = 0;
+	while (str[cnt] != '\0')
 	{
-		out_str[cnt] = str[cnt - 1];
+		if (str[cnt] != ' ' && str[cnt] != '\n'	&& str[cnt] != '\t'
+				&& str[cnt] != '\v' && str[cnt] != '\f' && str[cnt] != '\r')
+			if (str[cnt + 1] == ' ' || str[cnt + 1] == '\n'
+					|| str[cnt + 1] == '\t' || str[cnt + 1] == '\0'
+					|| str[cnt + 1] == '\v' || str[cnt + 1] == '\f'
+					|| str[cnt + 1] == '\r')
+				wcnt++;
 		cnt++;
 	}
-	out_str[len] = '\0';
-	return (out_str);
+	return (wcnt);
 }

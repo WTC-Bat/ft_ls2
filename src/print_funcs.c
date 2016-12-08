@@ -33,7 +33,7 @@ static void	s_file_prent_long(struct s_file *sfile)
 */
 void	blocks_print_total(struct s_file *sfile, t_lsargs lsargs)
 {
-	int	blocks;
+	blkcnt_t	blocks;
 
 	blocks = 0;
 	ft_putstr("total ");

@@ -12,22 +12,29 @@
 
 #include "libft.h"
 
+/*
+**	Mallocs and returns a new c-string containing the characters of 'str' in
+**	reverse. If memory allocation fails, or 'str' is NULL or empty, NULL is
+**	returned.
+*/
 char	*ft_strrev(char const *str)
 {
-	char	*revstring;
 	int		cnt;
-	int		len;
+	int		stridx;
+	char	*rstr;
 
+	if (str == NULL || str[0] == '\0')
+		return (NULL);
 	cnt = 0;
-	len = ft_strlen(str) - 1;
-	revstring = (char *)malloc(sizeof(char) * len + 1);
-	while (len != 0)
+	stridx = ft_strlen(str) - 1;
+	if ((rstr = (char *)malloc(sizeof(char) * stridx + 2)) == NULL)
+		return (NULL);
+	while (stridx >= 0)
 	{
-		revstring[cnt] = str[len];
-		len--;
+		rstr[cnt] = str[stridx];
 		cnt++;
+		stridx--;
 	}
-	revstring[cnt++] = str[0];
-	revstring[cnt] = '\0';
-	return (revstring);
+	rstr[cnt] = '\0';
+	return (rstr);
 }

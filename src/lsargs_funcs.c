@@ -62,3 +62,8 @@ void	lsargs_set(char c, t_lsargs *lsargs)
 		exit(1);
 	}
 }
+
+void	lsargs_free(t_lsargs lsargs)
+{
+	free(lsargs.path);
+}

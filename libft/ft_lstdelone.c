@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_length.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/05 12:48:52 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/07 16:54:53 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/08/09 14:22:37 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/08/09 14:22:39 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf/includes/ft_printf.h"
+#include "libft.h"
 
-int	check_length(t_mods mods)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	int		len;
-	int		cnt;
-
-	len = ft_strlen(mods.fmtl);
-	cnt = 0;
-	while (cnt < len - 1)
-	{
-		if (mods.fmtl[cnt] != 'l' && mods.fmtl[cnt] != 'h' &&
-			mods.fmtl[cnt] != 'j' && mods.fmtl[cnt] != 'z')
-			return (0);
-		cnt++;
-	}
-	return (1);
+	del((void *)(*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }

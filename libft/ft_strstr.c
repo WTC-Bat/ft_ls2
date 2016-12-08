@@ -15,9 +15,11 @@ char	*ft_strstr(char *str, char *to_find)
 	int		cnt;
 	int		cnt2;
 
+	if (to_find[0] == '\0')
+		return (str);
 	cnt = 0;
 	cnt2 = 0;
-	while (str[cnt])
+	while (str[cnt] != '\0')
 	{
 		while (str[cnt2 + cnt] == to_find[cnt2])
 		{

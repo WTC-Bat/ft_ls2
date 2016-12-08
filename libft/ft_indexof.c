@@ -10,16 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_indexof(char const *str, int c)
+#include "libft.h"
+
+/*
+**	Returns the index of the first occurence of the char 'c' in the c-string
+**	'str'. If 'str' is NULL or empty, or 'c' is '\0', -1 is returned.
+*/
+int		ft_indexof(char const *str, char c)
 {
 	int		cnt;
 
-	cnt = 0;
-	while (str[cnt])
+	if (str != NULL && str[0] != '\0' && c != '\0')
 	{
-		if (str[cnt] == c)
-			return (cnt);
-		cnt++;
+		cnt = 0;
+		while (str[cnt] != '\0')
+		{
+			if (str[cnt] == c)
+				return (cnt);
+			cnt++;
+		}
 	}
-	return (0);
+	return (-1);
 }

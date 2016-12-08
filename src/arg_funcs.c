@@ -6,10 +6,13 @@ int	arg_ispath(char *arg)
 	int			ispath;
 
 	st = (struct stat *)malloc(sizeof(struct stat));
+	if (st == NULL)
+		return (0);
 	ispath = 0;
 	if (lstat(arg, st) == 0)
 		if (S_ISDIR((*st).st_mode) > 0)
 			ispath = 1;
+	free(st);
 	return (ispath);
 }
 

@@ -12,14 +12,20 @@
 
 #include "libft.h"
 
-int		ft_startswith(char *str, char *start)
+/*
+**	Returns 1 if the c-string 'str' begins with the c-string 'start', otherwise
+**	0 is returned.
+*/
+int		ft_startswith(char const *str, char const *start)
 {
 	int		startlen;
 	int		cnt;
 
+	if (str == NULL || start == NULL)
+		return (0);
 	startlen = ft_strlen(start);
 	cnt = 0;
-	while (cnt < startlen)
+	while (cnt < startlen && str[cnt] != '\0')
 	{
 		if (str[cnt] != start[cnt])
 			return (0);

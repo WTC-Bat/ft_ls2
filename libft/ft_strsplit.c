@@ -6,42 +6,61 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 15:16:03 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/03 13:38:26 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/05/15 15:30:30 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-**	malloc strs
-*/
+static int	word_count(char const *s, char c)
+{
+	int		cnt;
+	int		wcnt;
 
-char	**ft_strsplit(char const *s, char c)
+	cnt = 0;
+	wcnt = 0;
+	while (s[cnt] != '\0')
+	{
+		if (s[cnt] == c && s[cnt - 1] != c && cnt > 0)
+			wcnt++;
+		cnt++;
+	}
+	return (wcnt + 1);
+}
+
+static char	*get_word(char const *s, int scnt, int start)
+{
+	size_t	end;
+
+	end = (scnt + 1) - start;
+	return (ft_strsub(s, start, end));
+}
+
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**strs;
 	size_t	scnt;
 	size_t	strcnt;
 	size_t	start;
-	size_t	end;
 
-	strs = NULL;
+	if (s == NULL)
+		return (NULL);
 	scnt = 0;
 	start = 0;
-	end = 0;
 	strcnt = 0;
-	while (s[scnt])
+	if ((strs = (char **)malloc(sizeof(*strs) * (word_count(s, c) + 1))) == NULL)
+		return (NULL);
+	while (s[scnt] != '\0')
 	{
-		if (s[scnt] == c)
+		if (s[scnt] != c)
 		{
-			if (s[scnt + 1] != c)
-				start = scnt + 1;
-			else if (s[scnt - 1] != c)
-			{
-				end = end - start;
-				strs[strcnt] = ft_strsub(s, start, end);
-			}
+			if (s[scnt - 1] == c && scnt > 0)
+				start = scnt;
+			else if (s[scnt + 1] == c || s[scnt + 1] == '\0')
+				strs[strcnt] = get_word(s, scnt, start);
 		}
 		scnt++;
 	}
+	strs[strcnt] = NULL;
 	return (strs);
 }

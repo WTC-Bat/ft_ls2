@@ -14,7 +14,9 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n > 9)
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n > 9)
 	{
 		ft_putnbr_fd(n / 10, fd);
 		ft_putnbr_fd(n % 10, fd);
@@ -26,7 +28,5 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n, fd);
 	}
 	else
-	{
 		ft_putchar_fd('0' + n, fd);
-	}
 }
