@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:05:36 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/15 15:05:52 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/08/09 14:22:37 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/08/09 14:22:39 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	if (s)
-		while (*s)
-			ft_putchar(*s++);
+	del((void *)(*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }

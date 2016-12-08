@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:08:52 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/15 15:09:11 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/06/03 14:07:34 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/06/03 14:35:59 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+/*
+**	Mallocs and returns a new c-string containing the characters of 'str' in
+**	reverse. If memory allocation fails, or 'str' is NULL or empty, NULL is
+**	returned.
+*/
+char	*ft_strrev(char const *str)
 {
-	char	*str;
 	int		cnt;
+	int		stridx;
+	char	*rstr;
 
-	if (s == NULL || f == NULL)
-		return (NULL);
-	if ((str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
 	cnt = 0;
-	while (s[cnt])
+	stridx = ft_strlen(str) - 1;
+	if ((rstr = (char *)malloc(sizeof(char) * stridx + 2)) == NULL)
+		return (NULL);
+	while (stridx >= 0)
 	{
-		str[cnt] = f(cnt, s[cnt]);
+		rstr[cnt] = str[stridx];
 		cnt++;
+		stridx--;
 	}
-	str[cnt] = '\0';
-	return (str);
+	rstr[cnt] = '\0';
+	return (rstr);
 }

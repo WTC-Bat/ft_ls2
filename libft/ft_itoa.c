@@ -21,8 +21,6 @@ static size_t	get_len(int n)
 		len++;
 	if (n == 0)
 		return (1);
-	if (n == -2147483648)
-		return (10);
 	while (n != 0)
 	{
 		n = n / 10;
@@ -38,16 +36,8 @@ static int		set_nbr(int n)
 	nbr = 0;
 	if (n < 0)
 	{
-		if (n == -2147483648)
-		{
-			nbr = n + 1;
-			nbr = -nbr;
-		}
-		else
-		{
-			nbr = n;
-			nbr = -nbr;
-		}
+		nbr = n;
+		nbr = -nbr;
 	}
 	else
 		nbr = n;
@@ -60,6 +50,8 @@ char			*ft_itoa(int n)
 	int		nbr;
 	size_t	nlen;
 
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	nlen = get_len(n);
 	istr = (char *)malloc(sizeof(char) * (nlen + 1));
 	if (istr == NULL)
@@ -75,7 +67,7 @@ char			*ft_itoa(int n)
 	}
 	if (n < 0)
 		*--istr = '-';
-	if (n == -2147483648)
+	if (n == (-2147483647 - 1))
 		istr[ft_strlen(istr) - 1] = '8';
 	return (istr);
 }

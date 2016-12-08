@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:05:36 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/15 15:05:52 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/08/09 14:22:19 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/08/09 14:22:21 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (s)
-		while (*s)
-			ft_putchar(*s++);
+	t_list	*tmp;
+
+	while (*alst != NULL)
+	{
+		tmp = (*alst)->next;
+		del((void *)(*alst)->content, (*alst)->content_size);
+		free(*alst);
+		*alst = NULL;
+		*alst = tmp;
+	}
 }

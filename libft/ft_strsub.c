@@ -17,10 +17,12 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t	cnt;
 	char	*sub;
 
+	if (!s)
+		return (NULL);
 	cnt = 0;
-	sub = (char *)malloc(sizeof(char) * len);
+	sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (!sub)
-		return (0);
+		return (NULL);
 	while (cnt < len)
 	{
 		sub[cnt] = s[start + cnt];

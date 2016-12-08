@@ -14,9 +14,17 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void	*mem;
+	size_t			cnt;
+	unsigned char	*mem;
 
-	mem = (void *)malloc(sizeof(void) * size);
-	mem = 0;
+	if (((mem = (void *)malloc(sizeof(void) * size)) == NULL)
+			|| size > 65535)
+		return (NULL);
+	cnt = 0;
+	while (cnt <= size)
+	{
+		mem[cnt] = 0;
+		cnt++;
+	}
 	return (mem);
 }

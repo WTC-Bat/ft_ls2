@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_wcslen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:05:36 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/15 15:05:52 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/05/31 17:13:15 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/05/31 17:13:17 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+size_t	ft_wcslen(wchar_t const *wcs)
 {
-	if (s)
-		while (*s)
-			ft_putchar(*s++);
+	size_t	cnt;
+
+	if (wcs == NULL)
+		return (0);
+	cnt = 0;
+	while (*wcs++ != '\0')
+		cnt++;
+	return (cnt);
 }

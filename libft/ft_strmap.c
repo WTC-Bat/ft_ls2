@@ -15,11 +15,18 @@
 char	*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*str;
+	int		cnt;
 
-	if (!s || !f)
-		return (0);
-	str = (char *)malloc(sizeof(char *) * ft_strlen(s));
-	while (*s)
-		*str++ = f(*s);
+	if (s == NULL || f == NULL)
+		return (NULL);
+	if ((str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))) == NULL)
+		return (NULL);
+	cnt = 0;
+	while (s[cnt] != '\0')
+	{
+		str[cnt] = f(s[cnt]);
+		cnt++;
+	}
+	str[cnt] = '\0';
 	return (str);
 }
