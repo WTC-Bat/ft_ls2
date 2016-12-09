@@ -99,6 +99,7 @@ static char	**set_args(char *dirpath, t_lsargs lsargs)
 		args[1] = ft_strdup(dirpath);
 	}
 	// ft_strdel(&flags);
+	args[3] = NULL;
 	return (args);
 }
 
@@ -120,27 +121,25 @@ void		recursion(struct s_file *sfile, t_lsargs lsargs)
 	int		ac;
 
 	dirs = get_dirs(sfile);
+	s_file_free(sfile);
 	dcnt = 0;
 	ac = 0;
 	while (dirs[dcnt] != NULL)	//substr on dirs?
 	{
 		av = set_args(dirs[dcnt], lsargs);
 		ac = arg_count(av);
+		// ft_putendl("ARGS SET");
+		// int cnt = 0;
+		// while (av[cnt] != NULL)
+		// {
+		// 	ft_putendl(av[cnt]);
+		// 	cnt++;
+		// }
+		// ft_putnbr_endl(ac);
 		ft_ls(ac, av);
+		star_free(av);
 		dcnt++;
 	}
-
-	// int	cnt = 0;
-	// ft_putendl("DIRS:");
-	// while (dirs[cnt] != NULL)
-	// {
-	// 	ft_putendl(dirs[cnt]);
-	// 	cnt++;
-	// }
-	// ft_putendl("ENDDIRS");
-
-	if (lsargs.all_members == 1)
-	{
-		ft_putendl("ERROROROR");
-	}
+	star_free(dirs);
+	lsargs_free(lsargs);
 }

@@ -49,6 +49,7 @@ t_lsargs	analyze_args(int argc, char **argv)
 		ft_putendl_fd("Error: Unknown argument. Check path, if used.", 2);
 		exit(1);
 	}
+	ft_putendl("LSARGS INIT");
 	while (argv[scnt] != NULL)
 	{
 		if (argv[scnt][ccnt] == '-')	//??!!

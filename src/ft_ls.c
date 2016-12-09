@@ -98,13 +98,13 @@ void					ft_ls(int argc, char **argv)
 	// 	cnt++;
 	// }
 	// ft_putendl("ENDARG");
-
+	
 	lsargs = analyze_args(argc, argv);
 	sfile = s_file_init(lsargs);
 	initialize(sfile, lsargs);
 	//?
 	if (lsargs.recursive == 1)
 		recursion(sfile, lsargs);
-	lsargs_free(lsargs);
-	s_file_free(sfile);
+	// lsargs_free(lsargs);
+	// s_file_free(sfile);
 }

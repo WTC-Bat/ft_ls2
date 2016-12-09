@@ -63,5 +63,6 @@ void		s_file_sort_mtime_rev(struct s_file *sfile);
 void		s_file_format(struct s_file *sfile);
 void		s_file_free(struct s_file *sfile);
 char		*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la);
+void		star_free(char **star);
 
 #endif
