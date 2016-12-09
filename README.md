@@ -5,3 +5,5 @@
 		 another ft_ls repository (ft_ls/ft_lsR)
 
 	-	Does not support recursion yet! (-R)
+
+		-	For recursion, I think the previous variables need to be freed first
