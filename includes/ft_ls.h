@@ -44,6 +44,7 @@ char		*do_pad_left(int longest, int len, char *padstr);
 char		*do_pad_right(int longest, int len, char *padstr);
 void		do_sort(struct s_file *root, struct s_file *nxt);
 char		*format_time(time_t *ttmtime);
+void		ft_ls(int argc, char **argv);
 int			get_longest(struct s_file *sfile, char c);
 void		handle_print(struct s_file *sfile, t_lsargs lsargs);
 void		lsargs_set(char c, t_lsargs *lsargs);

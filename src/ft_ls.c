@@ -85,20 +85,14 @@ static void				initialize(struct s_file *sfile, t_lsargs lsargs)
 	}
 }
 
-int						main(int argc, char **argv)
+void					ft_ls(int argc, char **argv)
 {
 	struct s_file	*sfile;
 	t_lsargs		lsargs;
 
-	if (argc == 0)
-	{
-		ft_putendl_fd("Error: How did you even...?", 2);
-		exit(1);
-	}
 	lsargs = analyze_args(argc, argv);
 	sfile = s_file_init(lsargs);
 	initialize(sfile, lsargs);
 	lsargs_free(lsargs);
 	s_file_free(sfile);
-	return (0);
 }
