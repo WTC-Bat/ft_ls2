@@ -128,14 +128,6 @@ void		recursion(struct s_file *sfile, t_lsargs lsargs)
 	{
 		av = set_args(dirs[dcnt], lsargs);
 		ac = arg_count(av);
-		// ft_putendl("ARGS SET");
-		// int cnt = 0;
-		// while (av[cnt] != NULL)
-		// {
-		// 	ft_putendl(av[cnt]);
-		// 	cnt++;
-		// }
-		// ft_putnbr_endl(ac);
 		ft_ls(ac, av);
 		star_free(av);
 		dcnt++;
