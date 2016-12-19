@@ -41,6 +41,17 @@ t_lsargs	analyze_args(int argc, char **argv)
 	int			ccnt;
 	t_lsargs	lsargs;
 
+
+	ft_putendl("ARGS");
+	int	cnt = 0;
+	while (argv[cnt] != NULL)
+	{
+		ft_putendl(argv[cnt]);
+		cnt++;
+	}
+	ft_putendl("END");
+
+
 	scnt = 1;
 	ccnt = 0;
 	lsargs_init(argc, argv, &lsargs);

@@ -1,49 +1,5 @@
 #include "ft_ls.h"
 
-static int	dir_count(struct s_file *sfile)
-{
-	int		cnt;
-
-	cnt = 0;
-	while (sfile != NULL)
-	{
-		if (sfile->is_dir == 1)
-			cnt++;
-		sfile = sfile->next;
-	}
-	return (cnt);
-}
-
-static char	**get_dirs(struct s_file *sfile)
-{
-	char	**dirs;
-	int		cnt;
-	int		dircnt;
-
-	dircnt = dir_count(sfile);
-	if ((dirs = (char **)malloc(sizeof(*dirs) * dircnt + 1)) == NULL)
-	{
-		ft_putendl_fd("ERROR ALLOCATING DIRS", 2);
-		exit(1);
-	}
-	cnt = 0;
-	while (sfile != NULL)
-	{
-		if (sfile->is_dir == 1)
-		{
-			if ((ft_endswith(sfile->dir_path, "/.") == 0)
-					&& (ft_endswith(sfile->dir_path, "/..")) == 0)
-			{
-				dirs[cnt] = ft_strdup(sfile->dir_path);
-				cnt++;
-			}
-		}
-		sfile = sfile->next;
-	}
-	dirs[cnt] = NULL;
-	return (dirs);
-}
-
 static char	*flag_string(t_lsargs lsargs)
 {
 	char	*argstr;
@@ -72,6 +28,16 @@ static char	*flag_string(t_lsargs lsargs)
 		return (NULL);
 	else
 		return (argstr);
+}
+
+static int	arg_count(char **av)
+{
+	int		cnt;
+
+	cnt = 0;
+	while (av[cnt] != NULL)
+		cnt++;
+	return (cnt);
 }
 
 static char	**set_args(char *dirpath, t_lsargs lsargs)
@@ -103,25 +69,12 @@ static char	**set_args(char *dirpath, t_lsargs lsargs)
 	return (args);
 }
 
-static int	arg_count(char **av)
+void		recursion(char **dirs, t_lsargs lsargs)
 {
-	int		cnt;
-
-	cnt = 0;
-	while (av[cnt] != NULL)
-		cnt++;
-	return (cnt);
-}
-
-void		recursion(struct s_file *sfile, t_lsargs lsargs)
-{
-	char	**dirs;
 	int		dcnt;
 	char	**av;
 	int		ac;
 
-	dirs = get_dirs(sfile);
-	s_file_free(sfile);
 	dcnt = 0;
 	ac = 0;
 	while (dirs[dcnt] != NULL)	//substr on dirs?
@@ -133,5 +86,5 @@ void		recursion(struct s_file *sfile, t_lsargs lsargs)
 		dcnt++;
 	}
 	star_free(dirs);
-	lsargs_free(lsargs);
+	// lsargs_free(lsargs);
 }

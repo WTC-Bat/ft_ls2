@@ -89,13 +89,22 @@ void					ft_ls(int argc, char **argv)
 {
 	struct s_file	*sfile;
 	t_lsargs		lsargs;
+	char			**recurse_dirs;
 
 	lsargs = analyze_args(argc, argv);
 	sfile = s_file_init(lsargs);
 	initialize(sfile, lsargs);
 	//?
 	if (lsargs.recursive == 1)
-		recursion(sfile, lsargs);
-	// lsargs_free(lsargs);
+	{
+		recurse_dirs = get_dirs(sfile);
+		s_file_free(sfile);
+		recursion(recurse_dirs, lsargs);
+	}
+	else
+	{
+		s_file_free(sfile);
+	}
+	lsargs_free(lsargs);
 	// s_file_free(sfile);
 }

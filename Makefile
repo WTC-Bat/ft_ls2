@@ -8,7 +8,7 @@ SRCS = $(SRC)ft_ls.c $(SRC)arg_funcs.c $(SRC)lsargs_funcs.c \
 		$(SRC)s_file_funcs.c $(SRC)format_time.c $(SRC)print_funcs.c \
 		$(SRC)s_file_print_members.c $(SRC)do_sort.c $(SRC)s_file_sort.c \
 		$(SRC)s_file_format.c $(SRC)get_longest.c $(SRC)main.c \
-		$(SRC)recursion.c $(SRC)free_funcs.c
+		$(SRC)recursion.c $(SRC)free_funcs.c $(SRC)recursion_prep.c
 
 all: $(NAME)
 
