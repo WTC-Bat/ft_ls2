@@ -42,9 +42,7 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		ft_strdel(&pth);
 	}
 	free(st);
-	// free(pth);//?
 	ft_strdel(&pth);
-	// s_file_free(current);
 	s_file_format(root);
 	return (root);
 }

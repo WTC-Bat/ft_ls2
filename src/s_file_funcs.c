@@ -10,7 +10,7 @@ static char	*s_file_permissions2(struct stat *st, char *perms)
 		perms[9] = 'x';
 	perms[10] = '\0';
 	outperms = ft_strdup(perms);
-	free(perms);
+	ft_strdel(&perms);
 	return (outperms);
 }
 
@@ -43,26 +43,21 @@ char	*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la)
 {
 	char	*name;
 	char	*lname;
-	size_t	nsz;
-	size_t	lnsz;
+	char	*tmp;
 
 	lname = NULL;
-	nsz = 0;
-	lnsz = 0;
 	if (S_ISLNK(st->st_mode) > 0)
 	{
 		if (la.long_form == 1)
 		{
 			lname = (char *)malloc(sizeof(char) * 1024);
-			readlink(pth, lname, 1024);	//!?
-			nsz = ft_strlen(dnm);
-			lnsz = ft_strlen(lname);
-			name = (char *)malloc(sizeof(char) * (nsz + lnsz + 4));
-			ft_strcpy(name, dnm);
-			ft_strcat(name, " -> ");
-			ft_strcat(name, lname);
-			// free(lname);
+			readlink(pth, lname, 1024);
+			name = ft_strdup(dnm);
+			tmp = ft_strjoin(name, " -> ");
+			ft_strdel(&name);
+			name = ft_strjoin(tmp, lname);
 			ft_strdel(&lname);
+			ft_strdel(&tmp);
 			return (name);
 		}
 	}
@@ -72,18 +67,19 @@ char	*s_get_name(char *dnm, struct stat *st, char *pth, t_lsargs la)
 char	*s_file_get_path(t_lsargs lsargs, char *d_name)
 {
 	char	*pth;
+	char	*join;
 	size_t	pthsz;
 	size_t	dnamesz;
 
 	pthsz = ft_strlen(lsargs.path);
 	dnamesz = ft_strlen(d_name);
-	pth = (char *)malloc(sizeof(char) * (pthsz + dnamesz + 2));	//?1
-	ft_strcpy(pth, lsargs.path);
-	//if (ft_strcmp(pth, "./") != 0)
+	pth = ft_strdup(lsargs.path);
 	if (ft_strequ(pth, "./") == 0)
-		ft_strcat(pth, "/");
-	ft_strcat(pth, d_name);
-	return(pth);
+		join = ft_strjoin(pth, "/");
+	else
+		join = ft_strjoin(pth, d_name);
+	ft_strdel(&pth);
+	return(join);
 }
 
 void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
@@ -93,28 +89,24 @@ void	s_file_set_dirpath(struct s_file *sf, struct stat *st, char *pth)
 		sf->is_dir = 1;
 		sf->dir_path = ft_strdup(pth);
 	}
-	/*
-	else
-	{
-		sf->is_dir = 0;
-		sf->dir_path = ft_strdup("./");
-	}
-	*/
 }
 
 void	s_file_free(struct s_file *sfile)
 {
+	struct s_file	*tmp;
+
 	while (sfile != NULL)
 	{
-		// ft_strdel(&(sfile)->perms);
+		tmp = sfile;
+		ft_strdel(&(sfile)->perms);
 		ft_strdel(&(sfile)->strhlinks);
 		ft_strdel(&(sfile)->uname);
 		ft_strdel(&(sfile)->gname);
 		ft_strdel(&(sfile)->strsize);
 		ft_strdel(&(sfile)->mod_time);
-			// ft_strdel(&(sfile)->name);
+			// ft_strdel(&(sfile)->name);	//NOT ALLOCATED?
 		ft_strdel(&(sfile)->dir_path);
-		// free(sfile);
 		sfile = sfile->next;
+		free(tmp);
 	}
 }

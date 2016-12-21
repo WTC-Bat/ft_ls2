@@ -1,0 +1,15 @@
+char	*s_file_get_path(t_lsargs lsargs, char *d_name)
+{
+	char	*pth;
+	size_t	pthsz;
+	size_t	dnamesz;
+
+	pthsz = ft_strlen(lsargs.path);
+	dnamesz = ft_strlen(d_name);
+	pth = (char *)malloc(sizeof(char) * (pthsz + dnamesz + 2));	//?1
+	ft_strcpy(pth, lsargs.path);
+	if (ft_strequ(pth, "./") == 0)
+		ft_strcat(pth, "/");
+	ft_strcat(pth, d_name);
+	return(pth);
+}

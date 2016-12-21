@@ -5,3 +5,8 @@
 		 another ft_ls repository (ft_ls/ft_lsR)
 
 	-	Does not support recursion yet! (-R)
+
+
+	-	Changes only on 'fixup' branch:
+		-	new 's_file_get_path()'
+		-	new 's_get_name()'
