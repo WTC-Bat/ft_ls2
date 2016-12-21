@@ -9,7 +9,8 @@ static void	format_hlinks(struct s_file *sfile, size_t longest)
 
 	while (sfile != NULL)
 	{
-		hstr = ft_strdup(ft_itoa(sfile->hlinks)); //ft_itoa allocation is un-freeable. need to take a look
+		// hstr = ft_strdup(ft_itoa(sfile->hlinks)); //ft_itoa allocation is un-freeable. need to take a look
+		hstr = ft_itoa(sfile->hlinks);
 		len = ft_strlen(hstr);
 		padlen = longest - len;
 		if (padlen > 0)
@@ -31,7 +32,7 @@ static void	format_hlinks(struct s_file *sfile, size_t longest)
 		{
 			sfile->strhlinks = ft_strdup(hstr);
 		}
-		ft_strdel(&hstr);
+		// ft_strdel(&hstr);
 		sfile = sfile->next;
 	}
 }
